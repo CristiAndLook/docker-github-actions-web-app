@@ -25,5 +25,12 @@ jobs:
         echo "Start Login"
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     
-    # - name: Build the Docker image
+    - name: Build the Docker image
+      run: |
+         docker build -t lookandcris/private-lookandcris:0.0.1 .
+         docker build -t lookandcris/private-lookandcris:latest .
+    - name: Push the Docker image
+      run: | 
+         docker push lookandcris/private-lookandcris:0.0.1
+         docker push lookandcris/private-lookandcris:latest
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
